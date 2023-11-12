@@ -1,0 +1,429 @@
+@prefix : <http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36> .
+
+<http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#FranchiseOfficeHas
+:FranchiseOfficeHas rdf:type owl:ObjectProperty ;
+                    rdfs:domain :FranchiseOffice ;
+                    rdfs:range :FranchiseOfficeEmployee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#arePartOf
+:arePartOf rdf:type owl:ObjectProperty ;
+           rdfs:domain :Boardmembers ;
+           rdfs:range :RegionalOfficeEmployee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#collaboratesWith
+:collaboratesWith rdf:type owl:ObjectProperty ,
+                           owl:SymmetricProperty ;
+                  rdfs:domain :MarketingDepartmentFO ;
+                  rdfs:range :ITDepartmentFO .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#has
+:has rdf:type owl:ObjectProperty ;
+     owl:propertyChainAxiom ( :opened
+                              :instructs
+                              :storeHas
+                            ) .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#hasOne
+:hasOne rdf:type owl:ObjectProperty ;
+        owl:inverseOf :isTheOnlyCEOOf ;
+        rdf:type owl:FunctionalProperty ;
+        rdfs:domain :CEO ;
+        rdfs:range :Boardmembers .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#haveToDoTheTaskOf
+:haveToDoTheTaskOf rdf:type owl:ObjectProperty ,
+                            owl:ReflexiveProperty ;
+                   rdfs:domain :Employee ;
+                   rdfs:range :Employee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#hires
+:hires rdf:type owl:ObjectProperty ,
+                owl:InverseFunctionalProperty ;
+       rdfs:domain :Driver ;
+       rdfs:range :StoreEmployee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#instructs
+:instructs rdf:type owl:ObjectProperty ,
+                    owl:TransitiveProperty ;
+           rdfs:domain :PartOfFranchise ;
+           rdfs:range :PartOfFranchise .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#isAMemberOf
+:isAMemberOf rdf:type owl:ObjectProperty ;
+             owl:equivalentProperty :mustHave ;
+             rdfs:domain :StoreManager ;
+             rdfs:range :StoreEmployee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#isHiredBy
+:isHiredBy rdf:type owl:ObjectProperty ;
+           rdfs:domain :StoreEmployee ;
+           rdfs:range :Cleaner .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#isTheDriverOf
+:isTheDriverOf rdf:type owl:ObjectProperty ;
+               rdfs:domain :Driver ;
+               rdfs:range :StoreEmployee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#isTheOnlyCEOOf
+:isTheOnlyCEOOf rdf:type owl:ObjectProperty ;
+                rdfs:domain :Boardmembers ;
+                rdfs:range :CEO .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#makesPizzaAt
+:makesPizzaAt rdf:type owl:ObjectProperty ;
+              rdfs:domain :PizzaMaker ;
+              rdfs:range :StoreEmployee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#mustHave
+:mustHave rdf:type owl:ObjectProperty ;
+          rdfs:domain :StoreManager ;
+          rdfs:range :StoreEmployee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#opened
+:opened rdf:type owl:ObjectProperty ;
+        rdfs:domain :PartOfFranchise ;
+        rdfs:range :RegionalOffice .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#regionalOfficeHas
+:regionalOfficeHas rdf:type owl:ObjectProperty ;
+                   rdfs:domain :RegionalOffice ;
+                   rdfs:range :RegionalOfficeEmployee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#storeHas
+:storeHas rdf:type owl:ObjectProperty ,
+                   owl:InverseFunctionalProperty ,
+                   owl:IrreflexiveProperty ;
+          rdfs:domain :Store ;
+          rdfs:range :StoreEmployee .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#age
+:age rdf:type owl:DatatypeProperty ;
+     rdfs:domain :Employee ;
+     rdfs:range xsd:nonNegativeInteger .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Boardmembers
+:Boardmembers rdf:type owl:Class ;
+              rdfs:subClassOf :Employee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#CEO
+:CEO rdf:type owl:Class ;
+     owl:equivalentClass [ owl:intersectionOf ( :Boardmembers
+                                                :CEO
+                                              ) ;
+                           rdf:type owl:Class
+                         ] ;
+     rdfs:subClassOf :Boardmembers ;
+     owl:disjointWith :otherBoardmembers .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Cleaner
+:Cleaner rdf:type owl:Class ;
+         rdfs:subClassOf :Employee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Driver
+:Driver rdf:type owl:Class ;
+        rdfs:subClassOf :Employee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Employee
+:Employee rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#FranchiseOffice
+:FranchiseOffice rdf:type owl:Class ;
+                 rdfs:subClassOf :PartOfFranchise .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#FranchiseOfficeEmployee
+:FranchiseOfficeEmployee rdf:type owl:Class ;
+                         rdfs:subClassOf :Employee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#ITDepartmentFO
+:ITDepartmentFO rdf:type owl:Class ;
+                rdfs:subClassOf :FranchiseOffice .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#MarketingDepartmentFO
+:MarketingDepartmentFO rdf:type owl:Class ;
+                       rdfs:subClassOf :FranchiseOffice .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#PartOfFranchise
+:PartOfFranchise rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#PizzaMaker
+:PizzaMaker rdf:type owl:Class ;
+            rdfs:subClassOf :Employee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#RegionalOffice
+:RegionalOffice rdf:type owl:Class ;
+                rdfs:subClassOf :PartOfFranchise .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#RegionalOfficeEmployee
+:RegionalOfficeEmployee rdf:type owl:Class ;
+                        rdfs:subClassOf :Employee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Store
+:Store rdf:type owl:Class ;
+       rdfs:subClassOf :PartOfFranchise .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#StoreEmployee
+:StoreEmployee rdf:type owl:Class ;
+               owl:equivalentClass [ rdf:type owl:Class ;
+                                     owl:unionOf ( :Cleaner
+                                                   :Driver
+                                                   :PizzaMaker
+                                                 )
+                                   ] ;
+               rdfs:subClassOf :Employee ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :mustHave ;
+                                 owl:someValuesFrom :StoreManager
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :hires ;
+                                 owl:minQualifiedCardinality "5"^^xsd:nonNegativeInteger ;
+                                 owl:onClass :Driver
+                               ] .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#StoreManager
+:StoreManager rdf:type owl:Class ;
+              rdfs:subClassOf :Employee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#otherBoardmembers
+:otherBoardmembers rdf:type owl:Class ;
+                   rdfs:subClassOf :Boardmembers ,
+                                   [ rdf:type owl:Class ;
+                                     owl:complementOf :CEO
+                                   ] .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Ana
+:Ana rdf:type owl:NamedIndividual ,
+              :Driver ,
+              :Employee ;
+     :isTheDriverOf :Huddersfield_centralEmployee ;
+     :age 17 .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Andrew_Rennie
+:Andrew_Rennie rdf:type owl:NamedIndividual ,
+                        :CEO ,
+                        :Employee ;
+               :isTheOnlyCEOOf :UKBoardMembers ;
+               :age 53 .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Bianca
+:Bianca rdf:type owl:NamedIndividual ,
+                 :Employee ,
+                 :StoreManager ;
+        :isAMemberOf :Huddersfield_wakefieldroadEmployee ;
+        :age 28 .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Daljit
+:Daljit rdf:type owl:NamedIndividual ,
+                 :Driver ,
+                 :Employee ;
+        :isTheDriverOf :Huddersfield_centralEmployee ;
+        :age 29 .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Dan_Brown
+:Dan_Brown rdf:type owl:NamedIndividual ,
+                    :otherBoardmembers ;
+           :age 40 .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Dominos
+:Dominos rdf:type owl:NamedIndividual ,
+                  :PartOfFranchise ;
+         :opened :UKHeadquarter .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Huddersfield
+:Huddersfield rdf:type owl:NamedIndividual ,
+                       :FranchiseOffice ;
+              :instructs :Huddersfield_central .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#HuddersfieldITDept
+:HuddersfieldITDept rdf:type owl:NamedIndividual ,
+                             :ITDepartmentFO .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#HuddersfieldMarketingDept
+:HuddersfieldMarketingDept rdf:type owl:NamedIndividual ,
+                                    :MarketingDepartmentFO .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Huddersfield_central
+:Huddersfield_central rdf:type owl:NamedIndividual ,
+                               :Store ;
+                      :storeHas :Huddersfield_centralEmployee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Huddersfield_centralEmployee
+:Huddersfield_centralEmployee rdf:type owl:NamedIndividual ,
+                                       :StoreEmployee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Huddersfield_wakefieldroad
+:Huddersfield_wakefieldroad rdf:type owl:NamedIndividual ,
+                                     :Store ;
+                            :storeHas :Huddersfield_wakefieldroadEmployee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Huddersfield_wakefieldroadEmployee
+:Huddersfield_wakefieldroadEmployee rdf:type owl:NamedIndividual ,
+                                             :StoreEmployee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#IndiaBoardMembers
+:IndiaBoardMembers rdf:type owl:NamedIndividual ,
+                            :Boardmembers .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#IndiaHeadquarterEmployee
+:IndiaHeadquarterEmployee rdf:type owl:NamedIndividual ,
+                                   :RegionalOfficeEmployee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Jahid
+:Jahid rdf:type owl:NamedIndividual ,
+                :Driver .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Jassi
+:Jassi rdf:type owl:NamedIndividual ,
+                :PizzaMaker .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Jim
+:Jim rdf:type owl:NamedIndividual ,
+              :Employee ,
+              :PizzaMaker ,
+              :StoreEmployee ;
+     :age 20 .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Mirrat
+:Mirrat rdf:type owl:NamedIndividual ,
+                 :PizzaMaker .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Oliver
+:Oliver rdf:type owl:NamedIndividual ,
+                 :Driver ,
+                 :Employee ;
+        :isTheDriverOf :Huddersfield_centralEmployee ;
+        :age 24 .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Rayn
+:Rayn rdf:type owl:NamedIndividual ,
+               :PizzaMaker .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Samalira
+:Samalira rdf:type owl:NamedIndividual ,
+                   :FranchiseOfficeEmployee ;
+          :age 26 .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Samantha
+:Samantha rdf:type owl:NamedIndividual ,
+                   :Employee ,
+                   :StoreManager ;
+          :isAMemberOf :Huddersfield_centralEmployee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Sara
+:Sara rdf:type owl:NamedIndividual ,
+               :Cleaner ;
+      :age 44 .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Shamim
+:Shamim rdf:type owl:NamedIndividual ,
+                 :Driver ;
+        :isTheDriverOf :Huddersfield_wakefieldroadEmployee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#Troy
+:Troy rdf:type owl:NamedIndividual ,
+               :FranchiseOfficeEmployee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#UKBoardMembers
+:UKBoardMembers rdf:type owl:NamedIndividual ,
+                         :Boardmembers ;
+                :hasOne :Andrew_Rennie .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#UKHeadquarter
+:UKHeadquarter rdf:type owl:NamedIndividual ,
+                        :RegionalOffice ;
+               :instructs :Huddersfield ;
+               :regionalOfficeHas :UKHeadquarterEmployee .
+
+
+###  http://www.semanticweb.org/saman/ontologies/2023/10/untitled-ontology-36#UKHeadquarterEmployee
+:UKHeadquarterEmployee rdf:type owl:NamedIndividual ,
+                                :RegionalOfficeEmployee .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
